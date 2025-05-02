@@ -9,8 +9,11 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const multer = require('multer');
 
+require('dotenv').config();
+const DB_path = process.env.MONGO_URI;
+
 // MongoDB Connection String
-const DB_path = "mongodb+srv://arihant:arihant@airbnb.lln8oaz.mongodb.net/airbnb?retryWrites=true&w=majority&appName=airbnb";
+// const DB_path = "mongodb+srv://arihant:arihant@airbnb.lln8oaz.mongodb.net/airbnb?retryWrites=true&w=majority&appName=airbnb";
 
 // Local Module
 const storeRouter = require("./routes/storeRouter");
