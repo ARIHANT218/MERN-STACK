@@ -1,0 +1,77 @@
+<header class="bg-red-500 text-white p-4 shadow-md">
+  <!-- Add Font Awesome CSS in your layout file or head -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <nav class="container mx-auto flex justify-between items-center">
+    <ul class="flex space-x-4">
+      <li>
+        <a
+          href="/"
+          class="<%= currentPage === 'index' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+        ><i class="fas fa-home mr-2"></i>airbnb</a>
+      </li>
+
+      <% if (isLoggedIn) { %> 
+        <% if (user && user.userType === 'guest') { %>  
+          <li>
+            <a
+              href="/homes"
+              class="<%= currentPage === 'Home' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            ><i class="fas fa-building mr-2"></i>Homes-List</a>
+          </li>
+          <li>
+            <a
+              href="/favourites"
+              class="<%= currentPage === 'favourites' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            ><i class="fas fa-heart mr-2"></i>Favourites</a>
+          </li>
+          <li>
+            <a
+              href="/bookings"
+              class="<%= currentPage === 'bookings' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            ><i class="fas fa-calendar-check mr-2"></i>Bookings</a>
+          </li>
+        <% } else if (user && user.userType === 'host') { %>
+          <li>
+            <a
+              href="/host/host-home-list"
+              class="<%= currentPage === 'host-homes' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            ><i class="fas fa-house-user mr-2"></i>Host Homes</a>
+          </li>
+          <li>
+            <a
+              href="/host/add-home"
+              class="<%= currentPage === 'addHome' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+            ><i class="fas fa-plus-circle mr-2"></i>Add Home</a>
+          </li>
+        <% } %>
+      <% } %>
+    </ul>
+
+    <ul class="flex items-center gap-4">
+      <% if (!isLoggedIn) { %>
+        <li>
+          <a
+            href="/signup"
+            class="<%= currentPage === 'signUp' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 border border-white"
+          ><i class="fas fa-user-plus mr-2"></i>SignUp</a>
+        </li>
+        <li>
+          <a
+            href="/login"
+            class="<%= currentPage === 'login' ? 'bg-red-600 font-medium' : 'hover:bg-red-400' %> py-2 px-4 rounded-lg transition duration-300 border border-white"
+          ><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+        </li>
+      <% } else { %>
+        <li>
+          <form action="/logout" method="POST">
+            <button
+              type="submit"
+              class="hover:bg-red-400 py-2 px-4 rounded-lg transition duration-300 border border-white flex items-center"
+            ><i class="fas fa-sign-out-alt mr-2"></i>Logout</button>
+          </form>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
