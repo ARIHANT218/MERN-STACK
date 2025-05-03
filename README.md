@@ -22,3 +22,15 @@ Separate dashboards and features for Hosts and Guests
 Hosts can list and manage homes
 
 Guests can browse and book
+
+
+💻 Tech Stack:
+MongoDB (Database)
+
+Express.js & Node.js (Backend)
+
+EJS (Templating engine)
+
+bcrypt, Multer
+
+Render (Hosting platform)
